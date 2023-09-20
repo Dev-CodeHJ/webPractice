@@ -19,14 +19,14 @@
   <body>
       <div id="container">
          <h1>프런트엔드 개발자 지원서 </h1>
-         <p>HTML, CSS, Javascript에 대한 기술적 이해와 경험이 있는 분을 찾습니다.</p>
+         <p style="text-align: center; color: blue;">HTML, CSS, Javascript에 대한 기술적 이해와 경험이 있는 분을 찾습니다.</p>
          <hr>
          <form>
-			<h3>개인 정보</h3>
+			<h4>개인 정보</h4>
             <ul>
 				<li>
 					<label for="name">이름</label>
-					<input type="text" id="name" placeholder="공백 없이 입력하세요">
+					<input type="text" id="name" autofocus placeholder="공백 없이 입력하세요">
 				</li>
 				<li>
 					<label for="phone">연락처</label>
@@ -34,7 +34,7 @@
 				</li>
 			</ul>
 
-			<h3>지원 분야</h3>
+			<h4>지원 분야</h4>
             <ul>
 				<li>
 					<input type="radio" name="applying" id="web_publishing">
@@ -50,10 +50,14 @@
 				</li>
 			</ul>
 			
-			<h3>지원 동기</h3>
-        	<textarea id="memo" cols="60" rows="5" placeholder="본사 지원 동기를 간략히 써 주세요."></textarea><br>
-        	<input type="submit" value="접수하기">
-        	<input type="reset" value="다시쓰기">
+			<label>
+				<h4>지원 동기</h4>
+	        	<textarea id="memo" cols="60" rows="5" placeholder="본사 지원 동기를 간략히 써 주세요."></textarea>
+        	</label>
+        	<div>
+	        	<input type="submit" value="접수하기">
+	        	<input type="reset" value="다시쓰기">
+        	</div>
          </form>
       </div>
   </body>
