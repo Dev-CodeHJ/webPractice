@@ -1,0 +1,23 @@
+@charset "EUC-KR";
+
+table, th, td {
+  border:1px solid #ccc;
+  border-collapse: collapse;
+}
+
+th, td { 
+  padding:10px 20px; 
+}
+
+div {
+	border: 1px solid #222;
+}
+
+body { background-color: #222;}
+
+#container {
+	background-color: #fff;
+	width: 600px;
+	margin: 20px auto;
+	padding: 20px;
+}
