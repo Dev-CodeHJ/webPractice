@@ -8,17 +8,18 @@
       #container {
          width:200px;
          margin:30px auto;
+         perspective: 200px;
       }
     img {
       border:1px solid #ccc;
       border-radius:50%;      
       box-shadow: 5px 5px 30px 2px #000;
-      animation: rotate 2s infinite, background 1.5s infinite alternate;
+      animation: rotate 2.5s infinite;
     }
     @keyframes rotate {
 		form { transform: rotateY(0deg); }
+		50% { transform: rotateY(180deg); }
 		to { transform: rotateY(360deg); }
-		perspective: 200px;
 	}
    </style>
 </head>
