@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>연습문제 2</title>
+   <style>
+      body {
+         font-size:1.2em;
+         text-align:center;
+      }
+      p {
+		  color: red;
+	  }
+   </style>
+</head>
+<body>
+	<h2>3의 배수 찾기</h2>
+	
+	<script>
+		var num = parseInt(prompt("숫자를 입력하시오."));
+		var cnt = 0;
+		
+		if(num != null){
+			for(var i = 1; i <= num; i++) {
+				if(i % 3 == 0) {
+					document.write(i + ", ");
+					cnt++;
+				}
+			}
+			document.write("<br> <p><b>" + num + "까지의 3의 배수의 개수 : " + cnt + "</b></p>");
+		}
+	</script>
+</body>
+</html>

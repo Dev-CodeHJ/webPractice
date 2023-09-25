@@ -5,11 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>자리 배치도</title>
   <style>
+	  table, td {
+		  border-collapse: collapse;
+	  }
 	  td {
 		  border: 1px solid #ccc;
-		  border-collapse: collapse;
 		  padding: 5px;
 		  font-size: 0.9em;
+	  }
+	  .seatcolor {
+		  color: red;
 	  }
   </style>
 </head>
@@ -31,6 +36,8 @@
 			seatNo = i * colNum + j;
 			if(seatNo > memNum) {
 				break;
+			} else if(i <= 1){
+				document.write("<td class='seatcolor'> 좌석 " + seatNo + " </td>");
 			} else {
 				document.write("<td> 좌석 " + seatNo + " </td>");
 			}
