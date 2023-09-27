@@ -4,6 +4,7 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>연습문제 1</title>
+   <script src="http://code.jQuery.com/jQuery-3.7.1.min.js"></script>
    <style>
       ul{
          list-style: none;
@@ -20,6 +21,10 @@
       .check:hover {
          color:#222;
       }
+      .click {
+		  color: #ccc;
+		  text-decoration: line-through;
+	  }
    </style>
 </head>
 <body>
@@ -32,15 +37,20 @@
       <li><span class="check">&check;</span>할 일 5 </li>
    </ul>
    <script>
-	   var checks = document.querySelectorAll(".check");
-	   
-	   for(i = 0; i < checks.length; i++) {
-		   checks[i].addEventListener("click", function() {
-			   this.style.color = "#ccc";
-			   this.parentNode.style.color = "#ccc";
-			   this.parentNode.style.textDecoration = "line-through";
+	   // var checks = document.querySelectorAll(".check");
+	   $(document).ready(function() {
+		   $(".check").click(function() {
+			  $(this).parent().toggleClass("click");
 		   });
-	   }
+	   });
+		   /*for(i = 0; i < checks.length; i++) {
+			   checks[i].addEventListener("click", function() {
+				   this.style.color = "#ccc";
+				   this.parentNode.style.color = "#ccc";
+				   this.parentNode.style.textDecoration = "line-through";
+			   });
+		   }
+		   자바스크립트 내용 제이쿼리로 변경*/
    </script>
 </body>
 </html>

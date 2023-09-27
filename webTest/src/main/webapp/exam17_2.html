@@ -29,32 +29,31 @@
   </style>
 </head>
 <body>
-  <form>
-    <input type="text" id="rCount" value="1">행 
-    <input type="text" id="cCount" value="1">열    
-    <button onclick="drawTable(); return false;">작성</button>
-  </form>
-  <div id="contents"></div>
-
-  <script>
-    function drawTable() {
-      var rCount = document.querySelector("#rCount").value;
-      var cCount = document.querySelector("#cCount").value;
-
-      var newTable = document.createElement("table");
-      for(i = 0; i < rCount; i++) {
-        var newRow = document.createElement("tr");
-        for(j = 0; j < cCount; j++) {
-          var newCell = document.createElement("td");
-          var cellText = document.createTextNode(i + ", " + j);
-          newCell.appendChild(cellText);
-          newRow.appendChild(newCell);
-        }
-        newTable.appendChild(newRow);   
-      }
-      var contents = document.querySelector("#contents");
-      contents.appendChild(newTable);
-    }
-  </script>
+	<form>
+		<input type="text" id="rCount" value="1">행 
+		<input type="text" id="cCount" value="1">열    
+		<button onclick="drawTable(); return false;">작성</button>
+	</form>
+	<div id="contents"></div>
+	<script>
+		function drawTable() {
+			var rCount = document.querySelector("#rCount").value; //rCount 인풋에 입력된 값
+			var cCount = document.querySelector("#cCount").value; //cCount 인풋에 입력된 값
+			
+			var newTable = document.createElement("table");
+			for(i = 0; i < rCount; i++) {
+				var newRow = document.createElement("tr");
+				for(j = 0; j < cCount; j++) {
+					var newCell = document.createElement("td");
+					var cellText = document.createTextNode(i + ", " + j);
+					newCell.appendChild(cellText);
+					newRow.appendChild(newCell);
+				}
+				newTable.appendChild(newRow);
+			}
+			var contents = document.querySelector("#contents");
+			contents.appendChild(newTable);
+		}
+	</script>
 </body>
 </html>
