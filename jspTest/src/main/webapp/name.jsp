@@ -4,14 +4,9 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Addition2</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<%
-		int num1 = 20;
-		int num2 = 10;
-		int add = num1 + num2;
-	%>
-	<%=num1%>+<%=num2%>=<%=add%>
+	<h1>제 이름은 김휘진입니다.</h1>
 </body>
 </html>
