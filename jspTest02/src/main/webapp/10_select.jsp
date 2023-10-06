@@ -3,86 +3,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<meta charset="UTF-8">
-<title>회원 가입</title>
-<style type="text/css">
-label {
-   width:160px;
-   display: inline-block;
-   float: left;
-}
-#button{
-   text-align: center;
-}
-</style>
-<script type="text/javascript">
-   $(document).ready(function(){
-      
-      $("select[name=emailaddr]").change(function(){
-        if($(this).val().length == 0){
-           $('#email_dns').attr('disabled',false);
-           $('#email_dns').val('');
-           $('#email_dns').focus();
-        } else {
-           let val1 = $("select[name=emailaddr] option:selected").text();
-           $('#email_dns').val(val1);  
-           $('#email_dns').attr('disabled',true);
-        }
-        
-      });
-      
-   });
-   
-
-   function check_ok() {
-      document.reg_frm.hdEmail_dns.value = document.reg_frm.email_dns.value;
-      
-      if (document.reg_frm.name.value.length == 0) {
-         alert("이름을  써주세요.");
-         reg_frm.name.focus();
-         return false;
-      }
-      
-      if (document.reg_frm.jumin_1.value.length != 6) {
-         alert("주민번호 6글자이어야 합니다.");
-         reg_frm.jumin_1.focus();
-         return false;
-      }
-      
-      if (document.reg_frm.jumin_2.value.length != 7) {
-         alert("주민번호 7글자이어야 합니다.");
-         reg_frm.jumin_2.focus();
-         return false;         
-      }
-      
-      if (document.reg_frm.id.value.length == 0) {
-         alert("아이디를 써주세요");
-         reg_frm.id.focus();
-         return false;
-      }
-      
-      if (document.reg_frm.id.value.length < 4) {
-         alert("아이디는 4글자이상이어야 합니다.");
-         reg_frm.id.focus();
-         return false;
-      }      
-
-      if (document.reg_frm.pwd.value == "") {
-         alert("패스워드는 반드시 입력해야 합니다.");
-         reg_frm.pwd.focus();
-         return false;
-      }
-      //비밀번호 확인결과가 같은지 체크 
-      if (document.reg_frm.pwd.value != document.reg_frm.pwd_re.value) {
-         alert("패스워드가 일치하지 않습니다.");
-         reg_frm.pwd_re.focus();
-         return false;
-      }
-
-      return true;
-   }
-</script>
+	<meta charset="UTF-8">
+	<title>회원 가입</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<style type="text/css">
+		label {
+		   width:160px;
+		   display: inline-block;
+		   float: left;
+		}
+		#button{
+		   text-align: center;
+		}
+	</style>
 </head>
 <body>
 <form name="reg_frm" id="reg_frm" action="JoinServlet">
@@ -155,5 +88,72 @@ label {
     <input type="reset" value="취소">
  </div>
 </form>
+<script type="text/javascript">
+   $(document).ready(function(){
+      
+      $("select[name=emailaddr]").change(function(){
+        if($(this).val().length == 0){
+           $('#email_dns').attr('disabled',false);
+           $('#email_dns').val('');
+           $('#email_dns').focus();
+        } else {
+           let val1 = $("select[name=emailaddr] option:selected").text();
+           $('#email_dns').val(val1);  
+           $('#email_dns').attr('disabled',true);
+        }
+        
+      });
+      
+   });
+   
+
+   function check_ok() {
+      document.reg_frm.hdEmail_dns.value = document.reg_frm.email_dns.value;
+      
+      if (document.reg_frm.name.value.length == 0) {
+         alert("이름을  써주세요.");
+         reg_frm.name.focus();
+         return false;
+      }
+      
+      if (document.reg_frm.jumin_1.value.length != 6) {
+         alert("주민번호 6글자이어야 합니다.");
+         reg_frm.jumin_1.focus();
+         return false;
+      }
+      
+      if (document.reg_frm.jumin_2.value.length != 7) {
+         alert("주민번호 7글자이어야 합니다.");
+         reg_frm.jumin_2.focus();
+         return false;         
+      }
+      
+      if (document.reg_frm.id.value.length == 0) {
+         alert("아이디를 써주세요");
+         reg_frm.id.focus();
+         return false;
+      }
+      
+      if (document.reg_frm.id.value.length < 4) {
+         alert("아이디는 4글자이상이어야 합니다.");
+         reg_frm.id.focus();
+         return false;
+      }      
+
+      if (document.reg_frm.pwd.value == "") {
+         alert("패스워드는 반드시 입력해야 합니다.");
+         reg_frm.pwd.focus();
+         return false;
+      }
+      //비밀번호 확인결과가 같은지 체크 
+      if (document.reg_frm.pwd.value != document.reg_frm.pwd_re.value) {
+         alert("패스워드가 일치하지 않습니다.");
+         reg_frm.pwd_re.focus();
+         return false;
+      }
+
+      return true;
+   }
+</script>
 </body>
 </html>
