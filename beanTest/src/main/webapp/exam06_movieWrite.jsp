@@ -32,7 +32,11 @@ request.setCharacterEncoding("UTF-8");
 		</tr>
 		<tr>
 			<th>시놉시스</th>
-			<td><textarea name="synopsis" rows="10" cols="40"><jsp:getProperty property="synopsis" name="movie"/></textarea></td>
+			<td>
+				<textarea name="synopsis" rows="10" cols="40">
+					<jsp:getProperty property="synopsis" name="movie"/>
+				</textarea>
+			</td>
 		</tr>
 		<tr>
 			<th>장르</th>
