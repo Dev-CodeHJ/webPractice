@@ -10,8 +10,8 @@
 <%
 if(session.getAttribute("loginUser")==null) {
 	response.sendRedirect("10_sessionLoginForm.jsp");
-} else {
-	session.getAttribute("loginUser"); %>님 안녕하세요!<br>
+} else { %>
+	<%=session.getAttribute("loginUser")%>님 안녕하세요!<br>
 	저희 홈페이지에 방문해 주셔서 감사합니다.<br>
 	즐거운 시간 되세요....<br>
 	<form method="post" action="10_sessionLogout.jsp">
