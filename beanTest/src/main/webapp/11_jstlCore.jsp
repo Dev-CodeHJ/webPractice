@@ -16,7 +16,8 @@
    \${age} =${age}<hr>
 
    <c:set var="member"
-      value="<%= new com.hwijin.javabeans.MemberBeans() %>"></c:set>
+      value="<%= new com.hwijin.javabeans.MemberBeans() %>">
+   </c:set>
    <c:set target="${member}" property="name" value="휘진"></c:set>
    <c:set target="${member}" property="id">gnlwls0127</c:set>
    \${member} = ${member}
