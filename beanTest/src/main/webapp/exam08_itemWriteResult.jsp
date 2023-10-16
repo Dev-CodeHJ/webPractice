@@ -1,19 +1,17 @@
 <%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%!
+	<%! 
 	Connection conn = null;
-	Statement stmt = null;
-	ResultSet rs = null;
-	
+	PreparedStatement pstmt = null;
+
 	String url = "jdbc:mysql://localhost/nscott";
 	String uid = "root";
 	String pass = "ezen1234";
-	String sql = "select * from employee";
-%>
+	String sql = "insert into item values(?, ?, ?)";
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,33 +19,34 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border='1'>
 	<%
+	request.setCharacterEncoding("UTF-8");
+	
+	String name = request.getParameter("name");
+	int price= Integer.parseInt(request.getParameter("price"));
+	String description = request.getParameter("description");
+	
 	try{
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn = DriverManager.getConnection(url, uid, pass);
-		stmt = conn.createStatement();
-		rs = stmt.executeQuery(sql);
+		pstmt = conn.prepareStatement(sql);
 		
-		while(rs.next()) {
-			out.print("<tr>");
-			out.print("<td>" + rs.getString("name") + "</td>");
-			out.print("<td>" + rs.getString("address") + "</td>");
-			out.print("<td>" + rs.getString("ssn") + "</td>");
-			out.print("</tr>");
-		}
+		pstmt.setString(1, name);
+		pstmt.setInt(2, price);
+		pstmt.setString(3, description);
+		
+		pstmt.executeUpdate();
 	}catch(Exception e){
 		e.printStackTrace();
 	}finally{
 		try{
-			if(rs != null) rs.close();
-			if(stmt != null) stmt.close();
+			if(pstmt != null) pstmt.close();
 			if(conn != null) conn.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
 	%>
-	</table>
+	<a href="exam08_itemWrite.jsp">결과 보기</a>
 </body>
 </html>
