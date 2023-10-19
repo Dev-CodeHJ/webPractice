@@ -37,7 +37,7 @@
 		        <td class="login"> <a href="emLogout.do" style="text-decoration: none;">로그아웃</a></td>
 	        	<c:choose>
 			        <c:when test="${loginEm.level=='A'}">
-			        <td class="login"> <a href="emCustom.do" style="text-decoration: none;">사원 등록</a></td>
+			        <td class="login"> <a href="emRegister.do" style="text-decoration: none;">사원 등록</a></td>
 			        </c:when>
 			        <c:when test="${loginEm.level=='B'}">
 			        <td style="width:300px">사원 등록<br>
@@ -49,8 +49,10 @@
 		        </td>
 	        </tr>      
 	   </c:if>
-	   </table>
-   <h1>회원 전용 페이지</h1>
-   <img src="resources/img/kim.jpg">
+   </table>
+	<h3 style="text-align:center">회원 전용 페이지</h3>
+	<div>
+	   <center><img style="width:400px;"src="resources/img/kim.jpg"></center>
+	</div>
 </body>
 </html>

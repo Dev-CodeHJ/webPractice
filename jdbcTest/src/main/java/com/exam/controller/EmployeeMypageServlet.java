@@ -14,16 +14,16 @@ import com.exam.dao.EmployeeDAO;
 import com.exam.dto.EmployeeVO;
 
 /**
- * Servlet implementation class EmployeeLoginServlet
+ * Servlet implementation class EmployeeMypageServlet
  */
-@WebServlet("/emLogin.do")
-public class EmployeeLoginServlet extends HttpServlet {
+@WebServlet("/emMypage.do")
+public class EmployeeMypageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmployeeLoginServlet() {
+    public EmployeeMypageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,9 +32,7 @@ public class EmployeeLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "employee/emLogin.jsp";
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("employee/emMypageForm.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -42,28 +40,29 @@ public class EmployeeLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "employee/emProcessing.jsp";
+		request.setCharacterEncoding("UTF-8");
 		
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		String level = request.getParameter("level");
+		EmployeeVO eVo = new EmployeeVO();
+		eVo.setId(request.getParameter("id"));
+		eVo.setPw(request.getParameter("pw"));
+		eVo.setName(request.getParameter("name"));
+		eVo.setLevel(request.getParameter("level"));
+		eVo.setGender(request.getParameter("gender"));
+		eVo.setPhone(request.getParameter("phone"));
 		
 		EmployeeDAO eDao = EmployeeDAO.getInstance();
-		int result = eDao.loginCheck(id, pw, level);
-		if(result == 2) {
-			EmployeeVO eVo = eDao.getEmployee(id);
-			HttpSession session = request.getSession();
-			request.setAttribute("msg", "로그인에 성공하셨습니다.");
-			session.setAttribute("loginEm", eVo);
-		} else if(result == 1) {
-			request.setAttribute("msg", "사원레벨이 일치하지 않습니다.");
-		} else if(result == 0) {
-			request.setAttribute("msg", "비밀번호가 일치하지 않습니다.");
-		} else if(result == -1) {
-			request.setAttribute("msg", "아이디가 존재하지 않습니다.");
+		int result = eDao.updateEmployee(eVo);
+		HttpSession session = request.getSession();
+		session.setAttribute("loginEm", eVo);
+		if(result == 1) {
+			request.setAttribute("msg", "사원 정보가 수정되었습니다.");
+			request.setAttribute("result", 1);
+		} else {
+			request.setAttribute("msg", "사원 정보 수정에 실패하셨습니다.");
+			request.setAttribute("result", -1);
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("employee/emMypageSuccess.jsp");
 		dispatcher.forward(request, response);
 	}
 

@@ -7,17 +7,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>로그인</title>
 	<style type="text/css">
-	/*#container {
-		width: 100%;
-		height: 50px;
-		margin-top: 5px;
-	}
-	button {
-		width: 18%;
-		height: 100%;
-		padding: 10px 24px;
-		float: left;
-	}*/
 	table.main {
 		width: 500px;
 		margin: auto; 
@@ -30,11 +19,6 @@
 	table.top td.login:HOVER{
     	background-color: pink;
  	}
- 	.center {
-	  display: block;
-	  margin-left: auto;
-	  margin-right: auto;
-	}
 	</style>
 <script type="text/javascript" src="script/employee.js"></script>
 </head>
@@ -49,43 +33,9 @@
 		        <td>마이페이지<br>
 		        <span style="color:red">(로그인 후 사용 가능)</span></td>
 	        </tr>
-			<form action="emLogin.do" method="post" name="frm">
-			   <table class="main">
-					<tr>
-						<td colspan="2">로그인</td>
-					</tr>
-					<tr>
-						<td style="width: 50%;">아이디</td>
-						<td>
-							<input type="text" name="id">
-						</td>
-					</tr>
-					<tr>
-						<td style="width: 50%;">비밀번호</td>
-						<td>
-							<input type="password" name="pw">
-						</td>
-					</tr>
-					<tr>
-						<td style="width: 50%;">레벨</td>
-						<td>
-							<select name="level">
-								<option value="B">일반회원</option>
-								<option value="A">운영자</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<input type="submit" value="로그인" onclick="return loginCheck()">
-							<input type="reset" value="취소">
-						</td>
-					</tr>
-				</table>
-			</form>
         </c:if>
-        <c:if test="${!empty loginEm.name}">
-	    	<tr>
+        <c:if test="${!empty loginEm}">
+        	<tr>
 		        <td> ${loginEm.name}님 반갑습니다.</td>
 		        <td> 레벨 : ${loginEm.level}</td>
 		        <td class="login"> <a href="emLogout.do" style="text-decoration: none;">로그아웃</a></td>
@@ -101,12 +51,54 @@
 	        	<td class="login">
 		        <a href="emMypage.do" style="text-decoration: none;">마이페이지</a>
 		        </td>
-	        </tr>      
-	   </table>
-				<h3 style="text-align:center">회원 전용 페이지</h3>
-				<div>
-				   <img style="width:400px;"src="resources/img/kim.jpg" class="center">
-				</div>
-	   </c:if>
+	        </tr>
+		   <table class="main">
+				<tr>
+					<td colspan="2">
+						<h2>사원 정보</h2>
+						<p style="color: grey;">${msg}</p>
+					</td>
+				</tr>
+				
+				<c:if test="${result == 1}">
+					<tr>
+						<td style="width: 50%;">아이디</td>
+						<td>${loginEm.id}</td>
+					</tr>
+					<tr>
+						<td style="width: 50%;">비밀번호</td>
+						<td>${loginEm.pw}</td>
+					</tr>
+					<tr>
+						<td style="width: 50%;">이름</td>
+						<td>${loginEm.name}</td>
+					</tr>
+					<tr>
+						<td style="width: 50%;">레벨</td>
+						<td>
+							<c:if test="${loginEm.level == 'A'}">운영자</c:if>
+							<c:if test="${loginEm.level == 'B'}">일반회원</c:if>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 50%;">성별</td>
+						<td>
+							<c:if test="${loginEm.gender == 1}">남자</c:if>
+							<c:if test="${loginEm.gender == 2}">여자</c:if>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 50%;">전화번호</td>
+						<td>${loginEm.phone}</td>
+					</tr>
+				</c:if>
+					<tr>
+						<td colspan="2">
+							<input type="button" value="메인 페이지로 이동" onclick="location.href='emLogin.do'">
+						</td>
+					</tr>
+			</table>
+		</c:if>
+    </table>
 </body>
 </html>
