@@ -116,7 +116,7 @@ public class ProductDAO {
 	}
 	//상품 삭제를 위한 메소드
 	public void deleteProduct(String code) {
-		String sql = "delete product where code=?";
+		String sql = "delete from product where code=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
