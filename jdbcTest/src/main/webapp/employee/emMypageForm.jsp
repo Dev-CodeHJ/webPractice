@@ -80,12 +80,12 @@
 						<td>
 							<select name="level">
 								<c:if test="${loginEm.level=='A'}">
+									<option value="A" selected="selected">운영자</option>
 									<option value="B">일반회원</option>
-									<option value="A" checked="checked">운영자</option>
 								</c:if>
 								<c:if test="${loginEm.level=='B'}">
-									<option value="B" checked="checked">일반회원</option>
 									<option value="A">운영자</option>
+									<option value="B" selected="selected">일반회원</option>
 								</c:if>
 							</select>
 						</td>
@@ -95,12 +95,12 @@
 						<td>
 							<select name="gender">
 								<c:if test="${loginEm.gender==1}">
-									<option value=1 checked="checked">남자</option>
+									<option value=1 selected="selected">남자</option>
 									<option value=2>여자</option>
 								</c:if>
 								<c:if test="${loginEm.gender==2}">
-									<option value=1 checked="checked">남자</option>
-									<option value=2>여자</option>
+									<option value=1>남자</option>
+									<option value=2 selected="selected">여자</option>
 								</c:if>
 							</select>
 						</td>
