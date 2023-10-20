@@ -114,4 +114,20 @@ public class ProductDAO {
 			DBManager.close(conn, pstmt);
 		}
 	}
+	//상품 삭제를 위한 메소드
+	public void deleteProduct(String code) {
+		String sql = "delete product where code=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, code);
+			pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
 }
