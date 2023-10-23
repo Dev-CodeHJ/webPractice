@@ -1,31 +1,30 @@
-package com.hwijin.controller;
+package com.exam.controller;
 
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hwijin.dao.ProductDAO;
-import com.hwijin.dto.ProductVO;
+import com.exam.dao.MovieDAO;
+import com.exam.dto.MovieVO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 /**
- * Servlet implementation class ProductwriteServlet
+ * Servlet implementation class MovieWriteServlet
  */
-@WebServlet("/productWrite.do")
-public class ProductwriteServlet extends HttpServlet {
+@WebServlet("/movieWrite.do")
+public class MovieWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductwriteServlet() {
+    public MovieWriteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +33,7 @@ public class ProductwriteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("product/productWrite.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("movie/movieWrite.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -44,28 +43,31 @@ public class ProductwriteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		ServletContext context = getServletContext();
-		String path = "D:/webWorkspace/webStudy-01/src/main/webapp/upload";
+		String path = "C:\\Users\\Admin\\git\\webPractice\\webStudy-01\\src\\main\\webapp\\images";
 		String encType = "UTF-8";
 		int sizeLimit = 20*1024*1024;
 		
 		MultipartRequest multi = new MultipartRequest(request, path, sizeLimit, encType, new DefaultFileRenamePolicy());
 		
-		String name = multi.getParameter("name");
+		String title = multi.getParameter("title");
 		int price = Integer.parseInt(multi.getParameter("price"));
-		String description = multi.getParameter("description");
-		String pictureUrl = multi.getFilesystemName("pictureUrl");
+		String director = multi.getParameter("director");
+		String actor = multi.getParameter("actor");
+		String poster = multi.getFilesystemName("poster");
+		String synopsis = multi.getParameter("synopsis");
 		
-		ProductVO pVo = new ProductVO();
-		pVo.setName(name);
-		pVo.setPrice(price);
-		pVo.setDescription(description);
-		pVo.setPictureUrl(pictureUrl);
+		MovieVO mVo = new MovieVO();
+		mVo.setTitle(title);
+		mVo.setPrice(price);
+		mVo.setDirector(director);
+		mVo.setActor(actor);
+		mVo.setPoster(poster);
+		mVo.setSynopsis(synopsis);
 		
-		ProductDAO pDao = ProductDAO.getInstance();
-		pDao.insertProduct(pVo);
+		MovieDAO mDao = MovieDAO.getInstance();
+		mDao.insertMovie(mVo);
 		
-		response.sendRedirect("productList.do");
+		response.sendRedirect("movieList.do");
 	}
 
 }
