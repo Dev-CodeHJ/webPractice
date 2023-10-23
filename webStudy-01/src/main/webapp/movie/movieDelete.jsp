@@ -15,7 +15,7 @@
 	<form action="movieDelete.do" method="post">
 		<table>
 			<tr>
-				<td>
+				<td style="width: 220px;">
 					<c:choose>
 						<c:when test="${empty movie.poster}">
 							<img src="images/noimage.gif">
