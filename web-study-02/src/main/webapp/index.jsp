@@ -8,7 +8,8 @@
 </head>
 <body>
 <%
-response.sendRedirect("http://localhost:8081/web-study-02/BoardServlet?command=board_list");
+response.sendRedirect("http://localhost:8081/web-study-02/EmployeeServlet?command=employee_list");
+//response.sendRedirect("http://localhost:8081/web-study-02/BoardServlet?command=board_list");
 %>
 </body>
 </html>

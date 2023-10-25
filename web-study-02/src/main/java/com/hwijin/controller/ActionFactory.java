@@ -3,7 +3,10 @@ package com.hwijin.controller;
 import com.hwijin.controller.action.Action;
 import com.hwijin.controller.action.BoardCheckPwAction;
 import com.hwijin.controller.action.BoardCheckPwFormAction;
+import com.hwijin.controller.action.BoardDeleteAction;
 import com.hwijin.controller.action.BoardListAction;
+import com.hwijin.controller.action.BoardUpdateAction;
+import com.hwijin.controller.action.BoardUpdateFormAction;
 import com.hwijin.controller.action.BoardViewAction;
 import com.hwijin.controller.action.BoardWriteAction;
 import com.hwijin.controller.action.BoardWriteFormAction;
@@ -32,6 +35,12 @@ public class ActionFactory {
 			action = new BoardCheckPwFormAction();
 		} else if(command.equals("board_check_pw")) {
 			action = new BoardCheckPwAction();
+		} else if(command.equals("board_update_form")) {
+			action = new BoardUpdateFormAction();
+		} else if(command.equals("board_update")) {
+			action = new BoardUpdateAction();
+		} else if(command.equals("board_delete")) {
+			action = new BoardDeleteAction();
 		}
 		return action;
 	}
